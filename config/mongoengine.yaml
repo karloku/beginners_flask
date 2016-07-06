@@ -1,0 +1,2 @@
+development:
+  host: mongodb://localhost:27017/python_playground
