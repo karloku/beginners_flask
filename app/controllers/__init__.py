@@ -1,1 +1,2 @@
+from application_controller import ApplicationController
 from users_controller import UsersController
