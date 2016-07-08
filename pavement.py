@@ -6,6 +6,10 @@ from paver.easy import *
 from application import app
 
 @task
+def server():
+    app.run()
+
+@task
 def shell():
     import code
     ctx = {}
