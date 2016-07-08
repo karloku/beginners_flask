@@ -23,6 +23,13 @@ class BaseSerializer:
     def attr_names(cls):
         return cls.__attr_configs__.keys()
 
+    # returns whether the output document of the serializer is a list
+    # - True if be
+    # - False if not
+    @classmethod
+    def is_list(cls):
+        return False    
+
     # returns whether the output document of the serializer is an object
     # objects require further serialization of fields
     # - True if it has attrs
@@ -37,6 +44,9 @@ class BaseSerializer:
 
     # returns the output document ready to be serialized
     def serializer_document(self):
+        if not self.__class__.is_object():
+            return self.document
+
         attrs = []
         for attr in self.__class__.attr_names():
             attr_arguments = self.__class__.attr_configs()[attr]['arguments']

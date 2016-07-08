@@ -1,12 +1,13 @@
 from flask import request
 from app.models import User
-from lib import ModelJSONEncoder
+from app.serializers import dumps
+
 
 class UsersController:
     @classmethod
     def index(cls):
-        return ModelJSONEncoder.dumps(User.objects.all().values_list())
+        return dumps(User.objects.all())
 
     @classmethod
     def show(cls, user_id):
-        return ModelJSONEncoder.dumps(User.get_by_id(user_id))
+        return dumps(User.get_by_id(user_id))
